@@ -19,7 +19,6 @@ com/bingo/api/entity/Usuario.class
 com/bingo/api/config/CorsConfig.class
 com/bingo/api/repository/JogoRepository.class
 com/bingo/api/repository/CartelaRepository.class
-com/bingo/api/controller/AdminController.class
 com/bingo/api/dto/JogoDTO.class
 com/bingo/api/service/WebSocketService.class
 com/bingo/api/security/SecurityConfig.class

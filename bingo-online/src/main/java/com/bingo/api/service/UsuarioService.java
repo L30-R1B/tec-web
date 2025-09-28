@@ -59,4 +59,8 @@ public class UsuarioService {
         return usuarioRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }
+
+    public void save(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
 }
