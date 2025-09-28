@@ -10,6 +10,8 @@ import com.bingo.api.entity.Usuario;
 import com.bingo.api.service.JogoService;
 import com.bingo.api.service.UsuarioService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -70,16 +72,21 @@ public class AdminController {
     @Autowired
     private UsuarioService usuarioService;
 
-    // Adicione este endpoint para criar um admin
-    @PostMapping("/usuarios/admin")
-    public ResponseEntity<UsuarioDTO> criarAdmin(@RequestBody AuthRequest request, @RequestHeader("X-Admin-Secret") String secret) {
+    @PostMapping("/register/admin")
+    public ResponseEntity<UsuarioDTO> registrarAdmin(@Valid @RequestBody AuthRequest request, @RequestHeader("X-Admin-Secret") String secret) {
         // Chave secreta simples para proteger a criação de admin
-        if (!"12345".equals(secret)) {
-            return ResponseEntity.status(403).build();
+        if (!"senha-super-secreta-admin".equals(secret)) {
+            return ResponseEntity.status(403).build(); // Forbidden
         }
-        Usuario admin = usuarioService.criarUsuario(request.getNome(), request.getEmail(), request.getSenha());
+
+        Usuario admin = usuarioService.criarUsuario(
+            request.getNome(),
+            request.getEmail(),
+            request.getSenha()
+        );
         admin.setIsAdmin(true);
-        usuarioService.save(admin); // Supondo que você adicione um método save no service
+        usuarioService.save(admin);
+
         return ResponseEntity.ok(usuarioService.toDTO(admin));
     }
 }

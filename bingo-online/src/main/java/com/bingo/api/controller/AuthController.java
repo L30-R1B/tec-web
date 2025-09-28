@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -46,16 +47,15 @@ public class AuthController {
     
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest request) {
-        authenticationManager.authenticate(
+        Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(request.getEmail(), request.getSenha())
         );
-        
-        Usuario usuario = usuarioService.buscarPorEmail(request.getEmail())
-            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        
+
+        Usuario usuario = (Usuario) authentication.getPrincipal();
+
         String jwt = jwtUtil.generateToken(usuario.getEmail());
         AuthResponse response = new AuthResponse(jwt, usuarioService.toDTO(usuario));
-        
+
         return ResponseEntity.ok(response);
     }
 }
