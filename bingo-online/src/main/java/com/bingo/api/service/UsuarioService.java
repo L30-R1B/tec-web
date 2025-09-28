@@ -11,32 +11,33 @@ import java.util.Optional;
 
 @Service
 public class UsuarioService {
-    
+
     @Autowired
     private UsuarioRepository usuarioRepository;
-    
+
     @Autowired
     private PasswordEncoder passwordEncoder;
-    
+
+    // MÉTODO MODIFICADO: Agora ele apenas prepara o usuário, sem salvar.
     public Usuario criarUsuario(String nome, String email, String senha) {
         if (usuarioRepository.existsByEmail(email)) {
             throw new RuntimeException("Email já cadastrado");
         }
-        
         Usuario usuario = new Usuario();
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setSenha(passwordEncoder.encode(senha));
-        usuario.setCreditos(BigDecimal.ZERO);
-        usuario.setIsAdmin(false);
-        
-        return usuarioRepository.save(usuario);
+        return usuario;
     }
-    
+
+    public void save(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
     public Optional<Usuario> buscarPorEmail(String email) {
         return usuarioRepository.findByEmail(email);
     }
-    
+
     public UsuarioDTO toDTO(Usuario usuario) {
         return new UsuarioDTO(
             usuario.getIdUsuario(),
@@ -46,7 +47,7 @@ public class UsuarioService {
             usuario.getIsAdmin()
         );
     }
-    
+
     public void debitarCredito(Usuario usuario, BigDecimal valor) {
         if (usuario.getCreditos().compareTo(valor) < 0) {
             throw new RuntimeException("Créditos insuficientes");
@@ -54,13 +55,9 @@ public class UsuarioService {
         usuario.setCreditos(usuario.getCreditos().subtract(valor));
         usuarioRepository.save(usuario);
     }
-    
+
     public Usuario buscarPorId(Long id) {
         return usuarioRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-    }
-
-    public void save(Usuario usuario) {
-        usuarioRepository.save(usuario);
     }
 }
