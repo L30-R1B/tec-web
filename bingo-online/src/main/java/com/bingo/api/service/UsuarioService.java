@@ -6,6 +6,8 @@ import com.bingo.api.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.math.BigDecimal;
 import java.util.Optional;
 
@@ -18,18 +20,28 @@ public class UsuarioService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    // MÉTODO MODIFICADO: Agora ele apenas prepara o usuário, sem salvar.
-    public Usuario criarUsuario(String nome, String email, String senha) {
+    @Transactional
+    public Usuario registrarNovoUsuario(String nome, String email, String senha, boolean isAdmin) {
         if (usuarioRepository.existsByEmail(email)) {
-            throw new RuntimeException("Email já cadastrado");
+            throw new RuntimeException("Erro: Email já está em uso!");
         }
+
         Usuario usuario = new Usuario();
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setSenha(passwordEncoder.encode(senha));
-        return usuario;
-    }
+        usuario.setIsAdmin(isAdmin);
 
+        if (isAdmin) {
+            usuario.setCreditos(new BigDecimal("9999.00"));
+        } else {
+            usuario.setCreditos(BigDecimal.ZERO);
+        }
+
+        return usuarioRepository.save(usuario);
+    }
+    
+    @Transactional
     public void save(Usuario usuario) {
         usuarioRepository.save(usuario);
     }
@@ -37,7 +49,7 @@ public class UsuarioService {
     public Optional<Usuario> buscarPorEmail(String email) {
         return usuarioRepository.findByEmail(email);
     }
-
+    
     public UsuarioDTO toDTO(Usuario usuario) {
         return new UsuarioDTO(
             usuario.getIdUsuario(),
@@ -47,7 +59,8 @@ public class UsuarioService {
             usuario.getIsAdmin()
         );
     }
-
+    
+    @Transactional
     public void debitarCredito(Usuario usuario, BigDecimal valor) {
         if (usuario.getCreditos().compareTo(valor) < 0) {
             throw new RuntimeException("Créditos insuficientes");
