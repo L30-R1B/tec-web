@@ -74,7 +74,7 @@ public class AdminController {
     @PostMapping("/usuarios/admin")
     public ResponseEntity<UsuarioDTO> criarAdmin(@RequestBody AuthRequest request, @RequestHeader("X-Admin-Secret") String secret) {
         // Chave secreta simples para proteger a criação de admin
-        if (!"senha-super-secreta-admin".equals(secret)) {
+        if (!"12345".equals(secret)) {
             return ResponseEntity.status(403).build();
         }
         Usuario admin = usuarioService.criarUsuario(request.getNome(), request.getEmail(), request.getSenha());
