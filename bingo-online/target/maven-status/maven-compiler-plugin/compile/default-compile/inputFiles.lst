@@ -1,3 +1,4 @@
+/home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/controller/SalaController.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/dto/AuthRequest.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/entity/Jogo.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/entity/Cartela.java
@@ -14,6 +15,7 @@
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/dto/WebSocketMessage.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/dto/AuthResponse.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/repository/SalaRepository.java
+/home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/controller/JogoController.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/service/JogoService.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/service/UsuarioService.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/entity/NumeroSorteado.java
@@ -29,4 +31,5 @@
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/dto/SalaDTO.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/dto/JogoDTO.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/dto/UsuarioDTO.java
+/home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/controller/AdminController.java
 /home/leonardo/tec-web/bingo-online/src/main/java/com/bingo/api/BingoApplication.java
