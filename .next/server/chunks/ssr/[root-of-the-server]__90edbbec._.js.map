@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 11, "column": 0}, "map": {"version":3,"sources":["file:///home/leonardo/tec-web/src/app/page.tsx"],"sourcesContent":["// Em: src/app/page.tsx\nimport { redirect } from 'next/navigation';\n\nexport default function HomePage() {\n  // Redireciona o usuário da página inicial (\"/\") para a página de login\n  redirect('/login');\n}"],"names":[],"mappings":"AAAA,uBAAuB;;;;;AACvB;AAAA;;AAEe,SAAS;IACtB,uEAAuE;IACvE,IAAA,+MAAQ,EAAC;AACX","debugId":null}}]
+}
