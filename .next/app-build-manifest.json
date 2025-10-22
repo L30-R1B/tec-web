@@ -2,7 +2,8 @@
   "pages": {
     "/_not-found/page": [
       "static/chunks/[root-of-the-server]__e53b97c1._.css",
-      "static/chunks/b7dba_next_dist_c1a52f3f._.js",
+      "static/chunks/b7dba_next_dist_fa0c2758._.js",
+      "static/chunks/tec-web_src_10680d22._.js",
       "static/chunks/tec-web_src_app_layout_tsx_8c72f646._.js",
       "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_64f75620._.js",
       "static/chunks/b7dba_next_dist_compiled_react-dom_c3597215._.js",
