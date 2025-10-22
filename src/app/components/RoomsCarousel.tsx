@@ -1,66 +1,64 @@
+// src/app/components/RoomsCarousel.tsx
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+import { api, Room } from '@/services/api';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './RoomsCarousel.css';
 
-interface Room {
-  id: number;
-  name: string;
-  players: number;
-  maxPlayers: number;
-  theme: string;
-  prize: string;
-}
-
-const mockRooms: Room[] = [
-  {
-    id: 1,
-    name: "Sala Rápida",
-    players: 8,
-    maxPlayers: 12,
-    theme: "Clássico",
-    prize: "R$ 50,00"
-  },
-  {
-    id: 2,
-    name: "Turbinada",
-    players: 15,
-    maxPlayers: 20,
-    theme: "Turbo",
-    prize: "R$ 100,00"
-  },
-  {
-    id: 3,
-    name: "Mega Prêmio",
-    players: 25,
-    maxPlayers: 30,
-    theme: "Premium",
-    prize: "R$ 250,00"
-  },
-  {
-    id: 4,
-    name: "Iniciantes",
-    players: 5,
-    maxPlayers: 10,
-    theme: "Amigável",
-    prize: "R$ 25,00"
-  },
-  {
-    id: 5,
-    name: "VIP",
-    players: 18,
-    maxPlayers: 25,
-    theme: "Exclusiva",
-    prize: "R$ 500,00"
-  }
-];
-
 export default function RoomsCarousel() {
+  const [rooms, setRooms] = useState<Room[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    loadRooms();
+  }, []);
+
+  const loadRooms = async () => {
+    try {
+      const data = await api.getAllRooms();
+      setRooms(data);
+    } catch (err) {
+      setError('Erro ao carregar salas');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div style={{ textAlign: 'center', padding: '40px' }}>
+        <p style={{ color: 'var(--primary-green)', fontSize: '20px' }}>
+          Carregando salas...
+        </p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{ textAlign: 'center', padding: '40px' }}>
+        <p style={{ color: '#dc2626', fontSize: '20px' }}>{error}</p>
+      </div>
+    );
+  }
+
+  if (rooms.length === 0) {
+    return (
+      <div style={{ textAlign: 'center', padding: '40px' }}>
+        <p style={{ color: 'var(--primary-green)', fontSize: '20px' }}>
+          Nenhuma sala disponível no momento
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="rooms-carousel-container">
       <Swiper
@@ -82,20 +80,17 @@ export default function RoomsCarousel() {
         }}
         className="rooms-swiper"
       >
-        {mockRooms.map((room) => (
+        {rooms.map((room) => (
           <SwiperSlide key={room.id}>
             <div className="room-card">
               <div className="room-header">
-                <h3 className="room-name">{room.name}</h3>
-                <span className="room-theme">{room.theme}</span>
+                <h3 className="room-name">{room.nome}</h3>
+                <span className="room-theme">Sala #{room.id}</span>
               </div>
 
               <div className="room-info">
                 <div className="players-count">
-                  <span> {room.players}/{room.maxPlayers} jogadores</span>
-                </div>
-                <div className="prize">
-                  <span> Prêmio: {room.prize}</span>
+                  <p style={{ margin: 0 }}>{room.descricao}</p>
                 </div>
               </div>
 

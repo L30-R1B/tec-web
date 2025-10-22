@@ -1,5 +1,7 @@
+// src/app/login/page.tsx
 import LoginForm from "@/app/components/LoginForm";
 import SocialButton from "@/app/components/SocialButton";
+import Link from "next/link";
 
 export default function LoginPage() {
   return (
@@ -27,9 +29,9 @@ export default function LoginPage() {
 
         <p className="login-signup-text">
           Ainda não faz parte?{" "}
-          <a href="#" className="login-signup-link">
+          <Link href="/register" className="login-signup-link">
             Cadastre-se agora!
-          </a>
+          </Link>
         </p>
       </div>
     </div>

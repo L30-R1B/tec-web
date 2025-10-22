@@ -1,6 +1,8 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Baloo_Bhaijaan_2 } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const balooBhaijaan = Baloo_Bhaijaan_2({
   weight: ['400', '500', '600', '700', '800'],
@@ -21,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={balooBhaijaan.variable}>
       <body className="antialiased">
-        <main>{children}</main>
+        <AuthProvider>
+          <main>{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -13,6 +13,10 @@
   }
 }
 
+.flex {
+  display: flex;
+}
+
 .cursor-not-allowed {
   cursor: not-allowed;
 }
