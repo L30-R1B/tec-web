@@ -1,0 +1,95 @@
+.rooms-carousel-container {
+
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.rooms-swiper {
+  padding: 20px 10px 60px;
+}
+
+.room-card {
+  background: linear-gradient(135deg, #1B6F09 0%, #4d7c0f 100%);
+  border-radius: 20px;
+  padding: 24px;
+  padding-bottom: 100px;
+  color: #E2F67E;
+  box-shadow: 0 8px 32px rgba(27, 111, 9, 0.3);
+  border: 2px solid #E2F67E;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(27, 111, 9, 0.4);
+}
+
+.room-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.room-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  color: #E2F67E;
+  font-family: var(--font-baloo-bhaijaan);
+}
+
+.room-theme {
+  background: #E2F67E;
+  color: #1B6F09;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+
+.players-count,
+.entry-fee,
+.prize {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.enter-room-button {
+  background: #E2F67E;
+  color: #1B6F09;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-baloo-bhaijaan);
+  margin-top: auto;
+}
+
+.enter-room-button:hover {
+  background: #bef264;
+  transform: scale(1.05);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #E2F67E !important;
+}
+
+.swiper-pagination-bullet {
+  background: #E2F67E !important;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
