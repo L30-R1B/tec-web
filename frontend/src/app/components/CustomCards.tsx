@@ -67,7 +67,7 @@ export default function CustomCards({ onAddCustomCard }: CustomCardsProps) {
             id: Date.now(),
             type: cardName,
             description: `Cartela personalizada ${cardSize}`,
-            price: cardSize === '4x4' ? 12.00 : 18.00,
+            price: cardSize === '4x4' ? 20.00 : 30.00,
             numbers: numbersMatrix
         };
 
