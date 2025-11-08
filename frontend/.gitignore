@@ -1,0 +1,30 @@
+# Dependency directories
+node_modules/
+/package-lock.json
+
+# Next.js build output
+.next/
+/out/
+
+# Environments
+.env
+.env.local
+.env.development
+.env.production
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Ignorar o cache do editor/IDE (ex: VS Code)
+.vscode/
+
+# Ignorar arquivos temporários de outros projetos/backend que estão no mesmo nível
+../backend/
+../utils/

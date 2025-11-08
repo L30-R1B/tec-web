@@ -1,0 +1,389 @@
+.navbarUserPage {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbarLinksLeftUser {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.navbarLogoCenterUser {
+  flex: 0 0 auto;
+  margin: 0 40px;
+}
+
+.navbarLogoUser {
+  height: 150px;
+  width: 150px;
+  display: block;
+}
+
+.navbarLinksRightUser {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.navbarLogoutUser {
+  margin-left: 20px;
+}
+
+
+.userMainContent {
+  padding: 40px 20px;
+  background-color: var(--yellow-bg);
+  min-height: calc(100vh - 120px);
+}
+
+.userContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+}
+
+.userSidebar {
+  flex: 0 0 300px;
+}
+
+.userProfileCard {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 2px solid var(--light-green);
+}
+
+.userAvatar {
+  margin-bottom: 20px;
+}
+
+.avatarCircle {
+  width: 100px;
+  height: 100px;
+  background-color: var(--primary-green);
+  color: var(--lime-bright);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.userInfo h2 {
+  color: var(--primary-green);
+  margin: 0 0 5px 0;
+  font-size: 24px;
+}
+
+.userEmail {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.userActions {
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.deleteAccountBtn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.deleteAccountBtn:hover {
+  color: #c82333;
+}
+
+.userContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.userCard {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--light-green);
+}
+
+.cardHeader {
+  background-color: var(--primary-green);
+  padding: 15px 30px;
+  border-radius: 10px 10px 0 0;
+}
+
+.cardTitle {
+  color: var(--lime-bright);
+  margin: 0;
+  font-size: 22px;
+}
+
+.cardContent {
+  padding: 20px 30px;
+}
+
+.gamesList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gameItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+.gameItem:last-child {
+  border-bottom: none;
+}
+
+.gameDate {
+  flex: 0 0 100px;
+}
+
+.gameRoom {
+  flex: 1;
+}
+
+.resultBadge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  min-width: 90px;
+  display: inline-block;
+}
+
+.won {
+  background-color: var(--lime-light);
+  color: var(--primary-green);
+}
+
+.lost {
+  background-color: #fca5a5;
+  color: #991b1b;
+}
+
+.gameAmount {
+  flex: 0 0 100px;
+  text-align: right;
+  color: var(--secondary-green);
+  font-weight: bold;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 0;
+  color: #666;
+  font-style: italic;
+}
+
+
+.upcomingGamesList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.upcomingGameItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  color: var(--primary-green);
+}
+
+.upcomingGameItem:last-child {
+  border-bottom: none;
+}
+
+.gameDatetime {
+  flex: 0 0 120px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.gameTime {
+  color: var(--secondary-green);
+}
+
+.gameDetails {
+  flex: 1;
+}
+
+.gamePrize {
+  font-weight: bold;
+  color: #d97706; 
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  width: 90%;
+  max-width: 400px;
+  border: 2px solid var(--light-green);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--lime-bg);
+  padding-bottom: 12px;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  color: var(--primary-green);
+  font-size: 20px;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: var(--primary-green);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  color: var(--secondary-green);
+}
+
+.modalBody {
+  margin-bottom: 24px;
+}
+
+.modalBody p {
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.modalActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Media Queries */
+
+@media (max-width: 1024px) {
+  .userContainer {
+    flex-direction: column;
+  }
+
+  .userSidebar {
+    flex: 1;
+    max-width: 100%;
+  }
+
+  .userProfileCard {
+    display: flex;
+    text-align: left;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .userAvatar {
+    margin: 0;
+  }
+
+  .userInfo {
+    flex: 1;
+  }
+
+  .userActions {
+    padding-top: 0;
+    border-top: none;
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .userProfileCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .userInfo {
+    margin-bottom: 15px;
+  }
+
+  .userActions {
+    align-self: center;
+  }
+  
+  .navbarUserPage {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .upcomingGameItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .gameDetails {
+    margin: 5px 0;
+  }
+
+  .gameItem {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .gameDate {
+    flex: 100%;
+    margin-bottom: 5px;
+  }
+  
+  .gameAmount {
+    flex: 0;
+  }
+}
