@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Button from "@/app/components/button";
 import { useRouter } from 'next/navigation';
-import styles from './user.module.css'; // <--- IMPORTAÇÃO ADICIONADA
+import styles from './user.module.css'; 
 
 interface UserData {
     name: string;

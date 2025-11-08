@@ -238,15 +238,13 @@ body {
     overflow-y: hidden;
 }
 
-/* ESTILOS ESSENCIAIS GLOBAIS DA NAVBAR */
 .navbar {
     background-color: var(--yellow-bg);
     height: 120px;
     display: flex;
     align-items: center;
-    /* CORREÇÃO: Usar space-between é o mais comum, mas flex-start também funciona se não houver conteúdo na direita. */
     justify-content: flex-start;
-    padding: 0 40px; /* Adiciona padding para o conteúdo não grudar na borda da tela */
+    padding: 0 40px; 
     box-sizing: border-box; 
     position: relative;
     min-height: 120px;
@@ -257,22 +255,18 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    /* Certifica que este wrapper apenas contenha seu conteúdo, não se espalhe */
     width: auto; 
 }
 
 .navbar-logo {
     height: 150px;
     width: 150px;
-    /* CORREÇÃO: Remove justify-content (inválido) e padding-right (era o que separava demais) */
-    /* Define o espaçamento correto entre a logo e os links */
     margin-right: 30px; 
 }
 
 .navbar-links {
     display: flex;
     gap: 5rem;
-    /* Remove justify-content: center; para que os links sigam o fluxo */
 }
 
 .nav-links {
