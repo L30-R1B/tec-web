@@ -9,10 +9,10 @@ interface ButtonProps {
   className?: string;
 }
 
-export default function Button({ 
-  children, 
-  onClick, 
-  type = 'button', 
+export default function Button({
+  children,
+  onClick,
+  type = 'button',
   variant = 'primary',
   disabled = false,
   className = ""
@@ -35,17 +35,24 @@ export default function Button({
         duration-200
   `;
 
+
       case 'secondary':
         return `
-          bg-[#4d7c0f]
-          text-[#ecfccb]
-          hover:bg-[#3f621c]
-          py-3
-          px-8
-          text-lg
-          font-[var(--font-baloo-bhaijaan)]
-          rounded-full
-        `;
+        bg-[#4d7c0f]
+        text-[#ecfccb]
+        hover:bg-[#3f621c]
+        hover:text-[#E2F67E]
+        font-[var(--font-baloo-bhaijaan)]
+        font-bold
+        text-lg
+        py-[8px]
+        px-[16px]
+        rounded-full
+        transition-all
+        duration-200
+        border-2
+        border-[#4d7c0f]
+    `;
       default:
         return `
           bg-[#E2F67E]
