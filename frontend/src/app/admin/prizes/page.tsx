@@ -176,17 +176,19 @@ export default function PrizesAdminPage() {
         const prizesWithDetails = await Promise.all(
           prizesData.map(async (prize: Prize) => {
             try {
-              const [gameResponse, userResponse] = await Promise.all([
-                fetch(`${API_BASE}/games/${prize.id_jogo}`, {
+              const gameResponse = await fetch(`${API_BASE}/games/${prize.id_jogo}`, {
+                headers: { 'Authorization': `Bearer ${authToken}` }
+              });
+
+              let userResponse = null;
+              if (prize.id_usuario) {
+                userResponse = await fetch(`${API_BASE}/users/${prize.id_usuario}`, {
                   headers: { 'Authorization': `Bearer ${authToken}` }
-                }),
-                fetch(`${API_BASE}/users/${prize.id_usuario}`, {
-                  headers: { 'Authorization': `Bearer ${authToken}` }
-                })
-              ]);
+                });
+              }
 
               const gameData = gameResponse.ok ? await gameResponse.json() : null;
-              const userData = userResponse.ok ? await userResponse.json() : null;
+              const userData = userResponse && userResponse.ok ? await userResponse.json() : null;
 
               return {
                 ...prize,
@@ -291,7 +293,7 @@ export default function PrizesAdminPage() {
       descricao: prize.descricao,
       valor: valorFormatado,
       id_jogo: prize.id_jogo.toString(),
-      id_usuario: prize.id_usuario.toString()
+      id_usuario: prize.id_usuario ? prize.id_usuario.toString() : ''
     });
     setShowForm(true);
   };
@@ -322,7 +324,7 @@ export default function PrizesAdminPage() {
         id_jogo: Number(formData.id_jogo)
       };
 
-      body.id_usuario = formData.id_usuario ? Number(formData.id_usuario) : null;
+      body.id_usuario = formData.id_usuario ? parseInt(formData.id_usuario, 10) : null;
 
       const response = await fetch(url, {
         method,
@@ -523,7 +525,7 @@ export default function PrizesAdminPage() {
                   {/* Usa a função corrigida */}
                   <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>R$ {formatDecimal(prize.valor)}</td>
                   <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>{prize.jogo_data ? `Jogo ${prize.id_jogo} (${new Date(prize.jogo_data).toLocaleDateString('pt-BR')})` : `Jogo ${prize.id_jogo}`}</td>
-                  <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>{prize.usuario_nome || `Usuário ${prize.id_usuario}`}</td>
+                  <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>{prize.usuario_nome || (prize.id_usuario ? `Usuário ${prize.id_usuario}` : 'Não atribuído')}</td>
                   <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <Button variant="primary" onClick={() => handleEditPrize(prize)} style={{ backgroundColor: '#4a752c', color: 'white', border: 'none', padding: '8px 12px', borderRadius: '6px', fontSize: '14px' }}>
