@@ -1,6 +1,9 @@
 'use client';
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import DicasLateral from '../components/Dica';
+import UserLayout from '../components/UserLayout';
+import Button from '../components/button';
 
 const Regras = [
   { numero: 1, titulo: 'Escolha uma sala', descricao: 'Selecione a sala com o prêmio que você quer disputar.' },
@@ -11,23 +14,37 @@ const Regras = [
 ];
 
 export default function InstrucoesBingo() {
+  const router = useRouter();
+
   return (
-    <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto', backgroundColor: 'white' }}>
-      <h1 style={{ color: 'green' }}>Como jogar nosso bingo online?</h1>
-      <p style={{ color: 'green', fontWeight: 'bold', fontSize:'1.2em' }}>Em poucos passos você pode se divertir e concorrer a prêmios!</p>
-      <div style={{ display: 'flex', gap: '50px', flexWrap: 'wrap' }}>
-        <div style={{ flex: 1, minWidth: '300px' }}>
-          {Regras.map(r => (
-            <div key={r.numero} style={{ marginBottom: '10px' }}>
-              <p style={{ fontWeight: 'bold', fontSize: '1.2em', color: '#006400' }}>{r.numero} - {r.titulo}</p>
-              <p style={{ color: 'green' }}>{r.descricao}</p>
-            </div>
-          ))}
+    <UserLayout>
+      <div className="page-container" style={{ padding: '20px 40px' }}>
+        <div className="page-header" style={{ marginBottom: '30px' }}>
+          <Button
+            variant="secondary"
+            onClick={() => router.back()}
+            className="back-button"
+          >
+            ← Voltar
+          </Button>
+          <h1 className="title" style={{ color: 'white', marginTop: '20px' }}>Como jogar nosso bingo online?</h1>
+          <p style={{ color: '#e2f67e', fontSize: '1.2em' }}>Em poucos passos você pode se divertir e concorrer a prêmios!</p>
         </div>
-        <div style={{ flexShrink: 0, minWidth: '300px' }}>
-          <DicasLateral />
+
+        <div style={{ display: 'flex', gap: '50px', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div style={{ flex: 1, minWidth: '300px', maxWidth: '600px' }}>
+            {Regras.map(r => (
+              <div key={r.numero} style={{ marginBottom: '20px', padding: '15px', backgroundColor: '#1a3d0f', borderRadius: '8px' }}>
+                <p style={{ fontWeight: 'bold', fontSize: '1.3em', color: 'white', margin: 0 }}>{r.numero} - {r.titulo}</p>
+                <p style={{ color: '#e2f67e', marginTop: '5px', margin: 0 }}>{r.descricao}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ flexShrink: 0, minWidth: '300px' }}>
+            <DicasLateral />
+          </div>
         </div>
       </div>
-    </div>
+    </UserLayout>
   );
 }

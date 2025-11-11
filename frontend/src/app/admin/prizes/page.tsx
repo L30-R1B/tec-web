@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Button from "@/app/components/button";
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; // Corrigido
 
 const API_BASE = 'http://localhost:3333';
 
@@ -10,7 +10,7 @@ interface Prize {
   id_premio: number;
   descricao: string;
   valor: any;
-  id_jogo: number;
+  id_jogo: number; // Corrigido
   id_usuario: number;
   jogo_data?: string;
   usuario_nome?: string;
@@ -26,7 +26,7 @@ interface User {
   nome: string;
 }
 
-// SOLUÇÃO CORRIGIDA para formatDecimal
+// SOLUÇÃO CORRIGIDA para formatDecimal (não mexer)
 // Funciona com valores inteiros E quebrados
 const formatDecimal = (val: any): string => {
   try {
@@ -285,7 +285,7 @@ export default function PrizesAdminPage() {
     setEditingPrize(prize);
     
     // Usa a função corrigida
-    const valorFormatado = formatDecimal(prize.valor);
+    const valorFormatado = formatDecimal(prize.valor); // Corrigido
     
     setFormData({
       descricao: prize.descricao,
@@ -300,7 +300,7 @@ export default function PrizesAdminPage() {
     setEditingPrize(null);
     setFormData({
       descricao: '',
-      valor: '', // Corrigido de 'val'
+      valor: '',
       id_jogo: '',
       id_usuario: ''
     });
@@ -315,13 +315,14 @@ export default function PrizesAdminPage() {
       const url = editingPrize ? `${API_BASE}/prizes/${editingPrize.id_premio}` : `${API_BASE}/prizes`;
       const method = editingPrize ? 'PATCH' : 'POST';
 
-      // Envia o valor como número simples, o que está correto
-      const body = {
+      // Envia o valor como número, e id_usuario como nulo se não for selecionado
+      const body: any = {
         descricao: formData.descricao,
         valor: parseFloat(formData.valor) || 0,
-        id_jogo: Number(formData.id_jogo),
-        id_usuario: Number(formData.id_usuario)
+        id_jogo: Number(formData.id_jogo)
       };
+
+      body.id_usuario = formData.id_usuario ? Number(formData.id_usuario) : null;
 
       const response = await fetch(url, {
         method,
@@ -447,7 +448,6 @@ export default function PrizesAdminPage() {
                   <select
                     value={formData.id_usuario}
                     onChange={(e) => setFormData({ ...formData, id_usuario: e.target.value })}
-                    required
                     style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '2px solid #4a752c', backgroundColor: '#1a3d0f', color: 'white', fontSize: '16px' }}
                   >
                     <option value="">Selecione um usuário</option>
@@ -522,7 +522,7 @@ export default function PrizesAdminPage() {
                   <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>{prize.descricao}</td>
                   {/* Usa a função corrigida */}
                   <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>R$ {formatDecimal(prize.valor)}</td>
-                  <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>{prize.jogo_data ? new Date(prize.jogo_data).toLocaleDateString('pt-BR') : `Jogo ${prize.id_jogo}`}</td>
+                  <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>{prize.jogo_data ? `Jogo ${prize.id_jogo} (${new Date(prize.jogo_data).toLocaleDateString('pt-BR')})` : `Jogo ${prize.id_jogo}`}</td>
                   <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>{prize.usuario_nome || `Usuário ${prize.id_usuario}`}</td>
                   <td style={{ border: '1px solid #2d7a2d', padding: '12px' }}>
                     <div style={{ display: 'flex', gap: '8px' }}>
