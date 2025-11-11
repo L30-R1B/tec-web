@@ -11,6 +11,7 @@ import { RoomsModule } from './rooms/rooms.module';
 import { GamesModule } from './games/games.module';
 import { PrizesModule } from './prizes/prizes.module';
 import { BingoEngineModule } from './bingo-engine/bingo-engine.module';
+import { CardsModule } from './cards/cards.module';
 
 @Module({
   imports: [
@@ -34,9 +35,9 @@ import { BingoEngineModule } from './bingo-engine/bingo-engine.module';
     GamesModule,
     PrizesModule,
     BingoEngineModule,
+    CardsModule,
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule {}
-

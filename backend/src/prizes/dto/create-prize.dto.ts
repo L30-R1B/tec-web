@@ -1,5 +1,5 @@
 // path: src/prizes/dto/create-prize.dto.ts
-import { IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsPositive, IsString, IsOptional } from 'class-validator';
 
 export class CreatePrizeDto {
     @IsString()
@@ -10,11 +10,10 @@ export class CreatePrizeDto {
     @IsPositive()
     valor: number;
     
+    @IsOptional() // Torna o campo opcional
     @IsNumber()
     @IsPositive()
-    id_usuario: number; // Geralmente, este campo seria o vencedor, que é definido no final do jogo. 
-                        // Pode ser removido do DTO de criação e adicionado programaticamente.
-                        // Mantido para seguir o esquema.
+    id_usuario?: number; // Agora é opcional
     
     @IsNumber()
     @IsPositive()
