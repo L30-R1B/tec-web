@@ -1,0 +1,488 @@
+
+.gameContainer {
+  min-height: 100vh;
+  background-color: var(--yellow-bg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.navbarGame {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--yellow-bg);
+  border-bottom: 3px solid var(--primary-green);
+  margin-bottom: 20px;
+}
+
+.gameInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.gameTitle {
+  color: var(--primary-green);
+  font-size: 32px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.gameSubtitle {
+  color: var(--secondary-green);
+  font-size: 18px;
+  margin: 5px 0 0 0;
+}
+
+.userInfoGame {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.userAvatarGame {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-green);
+  color: var(--lime-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.userNameGame {
+  color: var(--primary-green);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+.gameContent {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.drawnNumbersSection {
+  background-color: white;
+  border-radius: 15px;
+  border: 3px solid var(--light-green);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+}
+
+.sectionTitle {
+  color: var(--primary-green);
+  font-size: 28px;
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.drawnNumbersGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  min-height: 80px;
+  padding: 15px;
+  background-color: var(--lime-bg);
+  border-radius: 10px;
+  border: 2px dashed var(--light-green);
+}
+
+.drawnNumber {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lime-bright);
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.drawnNumber::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.drawnNumber.latest {
+  transform: scale(1.1);
+  border: 3px solid var(--lime-bright);
+  box-shadow: 0 0 15px var(--lime-light);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1.1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1.1); }
+}
+
+
+.cardsSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.bingoCard {
+  background-color: white;
+  border-radius: 15px;
+  border: 3px solid var(--light-green);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.bingoCard:hover {
+  transform: translateY(-5px);
+}
+
+.cardHeader {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  padding: 15px;
+  text-align: center;
+  color: var(--lime-bright);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.cardContent {
+  padding: 20px;
+}
+
+
+.bingoGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.gridHeader {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.letterCell {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-green);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lime-bright);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.gridRow {
+  display: contents;
+}
+
+.numberCell {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--light-green);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-green);
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.numberCell:hover {
+  background-color: var(--lime-bg);
+}
+
+.numberCell.marked {
+  background-color: var(--lime-light);
+  color: var(--primary-green);
+  border-color: var(--lime-light);
+  position: relative;
+}
+
+.numberCell.marked::after {
+  content: '✓';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--primary-green);
+  color: var(--lime-bright);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.numberCell.free {
+  background-color: var(--lime-light);
+  color: var(--primary-green);
+  font-weight: bold;
+  font-style: italic;
+}
+
+.actionsSection {
+  background-color: white;
+  border-radius: 15px;
+  border: 3px solid var(--light-green);
+  padding: 25px;
+  margin-top: auto;
+}
+
+.actionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.actionButton {
+  height: 80px;
+  border-radius: 15px;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+  font-family: var(--font-baloo-bhaijaan);
+}
+
+.actionButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.actionButton:active {
+  transform: translateY(0);
+}
+
+.bingoButton {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #B22222;
+  border: 3px solid #FF8C00;
+}
+
+.bingoButton:hover {
+  background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+}
+
+.exitButton {
+  background: var(--primary-green);
+  color: white;
+  border: 3px solid var(--primary-green);
+}
+
+.exitButton:hover {
+  background: var(--primary-green);
+}
+
+.buttonIcon {
+  font-size: 32px;
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.winModal {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  border: 5px solid var(--lime-bright);
+  box-shadow: 0 0 50px rgba(226, 246, 126, 0.5);
+  animation: modalAppear 0.5s ease-out;
+}
+
+@keyframes modalAppear {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.winTitle {
+  color: var(--primary-green);
+  font-size: 36px;
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.winMessage {
+  color: var(--secondary-green);
+  font-size: 20px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.prizeAmount {
+  font-size: 32px;
+  color: #FFD700;
+  font-weight: bold;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+@media (max-width: 1024px) {
+  .cardsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .navbarGame {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .userInfoGame {
+    flex-direction: column;
+  }
+  
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .actionsGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .actionButton {
+    height: 70px;
+    font-size: 24px;
+  }
+  
+  .drawnNumber {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gameContainer {
+    padding: 10px;
+  }
+  
+  .bingoGrid {
+    gap: 5px;
+  }
+  
+  .letterCell,
+  .numberCell {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .numberCell.marked::after {
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    top: -3px;
+    right: -3px;
+  }
+  
+  .sectionTitle {
+    font-size: 24px;
+  }
+  
+  .gameTitle {
+    font-size: 28px;
+  }
+}
+
+.cardsContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid var(--lime-bg);
+  border-radius: 10px;
+}
+
+
+.bingoCard.active {
+  border-color: var(--lime-bright);
+  box-shadow: 0 0 20px rgba(226, 246, 126, 0.5);
+}
