@@ -1,0 +1,380 @@
+/* Estilos da Navbar específica para relatórios */
+.navbarReportsPage {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbarLinksLeftReports {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.navbarLogoCenterReports {
+  flex: 0 0 auto;
+  margin: 0 40px;
+}
+
+.navbarLogoReports {
+  height: 150px;
+  width: 150px;
+  display: block;
+}
+
+.navbarLinksRightReports {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.navbarLogoutReports {
+  margin-left: 20px;
+}
+
+/* Conteúdo principal */
+.reportsMainContent {
+  padding: 40px 20px;
+  background-color: var(--yellow-bg);
+  min-height: calc(100vh - 120px);
+}
+
+.reportsContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.reportsHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.reportsHeader h1 {
+  color: var(--primary-green);
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.reportsHeader p {
+  color: var(--secondary-green);
+  font-size: 18px;
+}
+
+/* Grid de relatórios */
+.reportsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.reportCard {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--light-green);
+  overflow: hidden;
+}
+
+.reportCardHeader {
+  background-color: var(--primary-green);
+  padding: 15px 30px;
+  border-radius: 10px 10px 0 0;
+}
+
+.reportCardTitle {
+  color: var(--lime-bright);
+  margin: 0;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reportCardContent {
+  padding: 20px 30px;
+}
+
+/* Estatísticas gerais */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--lime-bg);
+  border-radius: 8px;
+  border: 1px solid var(--light-green);
+}
+
+.statValue {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--primary-green);
+  margin-bottom: 5px;
+}
+
+.statLabel {
+  color: var(--secondary-green);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Gráfico de distribuição */
+.distributionChart {
+  margin: 20px 0;
+}
+
+.chartBar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chartLabel {
+  width: 50px;
+  color: var(--primary-green);
+  font-weight: bold;
+}
+
+.chartBarInner {
+  flex: 1;
+  height: 20px;
+  background-color: var(--lime-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--light-green);
+}
+
+.chartBarFill {
+  height: 100%;
+  background-color: var(--primary-green);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.chartCount {
+  width: 40px;
+  text-align: right;
+  color: var(--secondary-green);
+  font-weight: bold;
+}
+
+/* Tabela de números */
+.numbersTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.numbersTable th {
+  background-color: var(--lime-bg);
+  color: var(--primary-green);
+  padding: 10px;
+  text-align: left;
+  border: 1px solid var(--light-green);
+}
+
+.numbersTable td {
+  padding: 10px;
+  border: 1px solid var(--light-green);
+  color: var(--secondary-green);
+}
+
+.numbersTable .highlight {
+  background-color: var(--lime-light);
+  color: var(--primary-green);
+  font-weight: bold;
+}
+
+/* Gráfico de linha do tempo */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  margin: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--light-green);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -30px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary-green);
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px var(--primary-green);
+}
+
+.timelineContent {
+  background-color: var(--lime-bg);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--light-green);
+}
+
+.timelineTime {
+  color: var(--secondary-green);
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.timelineEvent {
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+/* Botões de ação */
+.reportsActions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.exportButton {
+  background-color: var(--primary-green);
+  color: var(--lime-bright);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-baloo-bhaijaan);
+  transition: background-color 0.2s;
+}
+
+.exportButton:hover {
+  background-color: var(--secondary-green);
+}
+
+.exportButtonSecondary {
+  background-color: white;
+  color: var(--primary-green);
+  border: 2px solid var(--light-green);
+}
+
+.exportButtonSecondary:hover {
+  background-color: var(--lime-bg);
+}
+
+/* Modal de exportação */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  width: 90%;
+  max-width: 500px;
+  border: 2px solid var(--light-green);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--lime-bg);
+  padding-bottom: 12px;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  color: var(--primary-green);
+  font-size: 20px;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: var(--primary-green);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  color: var(--secondary-green);
+}
+
+.modalBody {
+  margin-bottom: 24px;
+}
+
+.modalActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .reportsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .reportsActions {
+    flex-direction: column;
+  }
+  
+  .exportButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbarReportsPage {
+    padding: 0 20px;
+  }
+  
+  .reportCardContent {
+    padding: 15px 20px;
+  }
+}
